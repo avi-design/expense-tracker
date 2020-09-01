@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://avijit:a.9830288613@devconnector.n6yky.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwtToken": "loginToken",
+    "gitHubClientId" :"621096ba90315e6505b7",
+    "gitHubClientSecret" : "e37ed23e44b601c5418374e4cea354fb65adbe65"
+}
