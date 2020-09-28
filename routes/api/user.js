@@ -28,7 +28,7 @@ async (req, res)=> {
     try {
         let user = await User.findOne({ email });
         if(user){
-            return res.status(400).json({errors:[{ message: "User already exists"}]}); 
+            return res.status(500).json({errors:[{ msg: "User already exists"}]}); 
         }
          
    // grvatar for image

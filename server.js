@@ -18,6 +18,6 @@ app.use("/api/profile", require("./routes/api/profile"));
 app.use("/api/transaction", require("./routes/api/transaction"));
 
 
-const PORT = process.env.PORT || 3001;
-
+//const PORT = process.env.PORT || 3001;
+const PORT = 3001;
 app.listen(PORT,()=> console.log(`server started on port ${PORT}`));

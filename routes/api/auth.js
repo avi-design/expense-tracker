@@ -28,7 +28,7 @@ router.post("/login",
     //  must be an email
     body('email', 'Please use a valid email ID').isEmail(),
     // password must be at least 5 chars long
-    body('password', 'Password Required').exists()
+    body('password', 'Password Required').not().isEmpty().exists()
   ],
 async (req, res)=> {
     const errors = validationResult(req);
@@ -40,13 +40,13 @@ async (req, res)=> {
     try {
         let user = await User.findOne({ email });
         if(!user){
-            return res.status(400).json({errors:[{ message: "Invalid Credentials"}]}); 
+            return res.status(400).json({errors:[{ msg: "Invalid Credentials"}]}); 
         }
 
 const isMatch = await bcrypt.compare(password, user.password);
 
 if(!isMatch){
-    return res.status(400).json({errors:[{ message: "Invalid Credentials"}]}); 
+    return res.status(400).json({errors:[{ msg: "Invalid Credentials"}]}); 
 }
 
 

@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 class FooterContainer extends Component{
     render(){
         return(
-            <footer className="footer">
+      <footer className="footer">
+        <div className ="container">
         <div className="row align-items-center justify-content-xl-between">
           <div className="col-xl-6">
             <div className="copyright text-center text-xl-left text-muted">
@@ -23,6 +24,7 @@ class FooterContainer extends Component{
               </li>
             </ul>
           </div>
+        </div>
         </div>
       </footer>
         )

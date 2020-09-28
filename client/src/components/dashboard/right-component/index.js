@@ -5,8 +5,9 @@ import FooterContainer from "../../footer/footer"
 class RightContent extends Component{
     render(){
       //const userInfo = JSON.parse(sessionStorage.getItem("googleUserData"));
-      debugger;
-      const userInfo = this.props.user;
+      //debugger;
+      const userInfo = this.props.user !=null ? this.props.user.user : "Jhon Smith";
+      //console.log(userInfo);
       //const userImage = userInfo ? true :false;
       //const googleProfileData = this.props.user.googleUserData;
       //const userInfo = "";
@@ -33,10 +34,10 @@ class RightContent extends Component{
             <a className="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div className="media align-items-center">
                 <span className="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src={userInfo ? userInfo.imageUrl || userInfo.googleUserData.profileObj.imageUrl : ""}/>
+                  <img alt="Image placeholder" src={ ""}/>
                 </span>
                 <div className="media-body ml-2 d-none d-lg-block">
-                  <span className="mb-0 text-sm  font-weight-bold">{userInfo ? userInfo.name || userInfo.googleUserData.profileObj.name : "Jhon Smith"}</span>
+                  <span className="mb-0 text-sm  font-weight-bold">{userInfo.name}</span>
                 </div>
               </div>
             </a>
@@ -432,9 +433,9 @@ class RightContent extends Component{
             </div>
           </div>
         </div>
-      </div>
-      <FooterContainer></FooterContainer>
+      </div> 
     </div>
+    <FooterContainer/>
   </div>
         )
     }
@@ -443,7 +444,7 @@ class RightContent extends Component{
 
 function mapStateToProps(state) {
   return({
-    user : state.user
+    user : state.user.userDeatils
   })
   
 }

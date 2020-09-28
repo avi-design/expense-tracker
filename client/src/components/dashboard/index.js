@@ -5,7 +5,6 @@ import NavBar from "../left-navbar/navbar";
 class DashBoardContent extends Component{
 
     render(){
-        console.log(this.props);
         return(
             <div className="main-content">
                 <NavBar></NavBar>

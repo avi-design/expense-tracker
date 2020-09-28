@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Link} from "react-router-dom";
  
-class LoginHeader extends Component{
+class PreLoginHeader extends Component{
     render(){
         return(
-            <nav className="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
+     <nav className="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
       <div className="container px-4">
         <a className="navbar-brand" href="../index.html">
           <img src="../assets/img/brand/white.png" />
@@ -35,16 +36,16 @@ class LoginHeader extends Component{
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link nav-link-icon" href="../examples/register.html">
+              <Link className="nav-link nav-link-icon" to="/register">
                 <i className="ni ni-circle-08"></i>
                 <span className="nav-link-inner--text">Register</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link nav-link-icon" href="../examples/login.html">
+              <Link className="nav-link nav-link-icon" to="/">
                 <i className="ni ni-key-25"></i>
                 <span className="nav-link-inner--text">Login</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link nav-link-icon" href="../examples/profile.html">
@@ -60,4 +61,4 @@ class LoginHeader extends Component{
     }
 }
 
-export default LoginHeader;
+export default PreLoginHeader;

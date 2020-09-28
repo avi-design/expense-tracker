@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
-
+import {connect} from "react-redux";
+import {logOut} from "../../actions";
+import{Redirect,Link} from "react-router-dom";
 
 class NavBar extends Component{
+  constructor(props){
+    super(props);
+  }
+
+  logout(){
+    this.props.logOut();
+  }
+
     render() {
+      if(!this.props.isAuthenticated){
+        return <Redirect to="/"/>
+      }
       return(
         <nav className="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
 <div className="container">
@@ -54,7 +67,7 @@ class NavBar extends Component{
           <span>Support</span>
         </a>
         <div className="dropdown-divider"></div>
-        <a href="#!" className="dropdown-item">
+        <a href="#!" className="dropdown-item" onClick={()=>this.logout()}>
           <i className="ni ni-user-run"></i>
           <span>Logout</span>
         </a>
@@ -89,9 +102,9 @@ class NavBar extends Component{
     </form>
     <ul className="navbar-nav">
       <li className="nav-item">
-        <a className="nav-link" href="./index.html">
+        <Link className="nav-link" to="/dashboard">
           <i className="ni ni-tv-2 text-primary"></i>Dashboard
-        </a>
+        </Link>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="./examples/icons.html">
@@ -99,9 +112,9 @@ class NavBar extends Component{
         </a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="./examples/maps.html">
-          <i className="ni ni-pin-3 text-orange"></i>Expense/Income Graph
-        </a>
+        <Link className="nav-link" to="/expenses">
+          <i className="ni ni-pin-3 text-orange"></i>Transaction
+        </Link>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="./examples/profile.html">
@@ -114,7 +127,7 @@ class NavBar extends Component{
         </a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="./examples/login.html">
+        <a className="nav-link" href="#!" onClick={()=>this.props.logOut()}>
           <i className="ni ni-key-25 text-info"></i> Logout
         </a>
       </li>
@@ -128,4 +141,18 @@ class NavBar extends Component{
 
  }
 
- export default NavBar;
+const mapStateToProps = state =>{
+  return{
+    isAuthenticated : state.auth.isAuthenticated
+  }
+}
+
+
+const mapDispatchToProps = dispatch =>{
+  return {
+    logOut:()=> dispatch(logOut())
+  }
+}
+
+
+ export default connect(mapStateToProps,mapDispatchToProps)(NavBar);

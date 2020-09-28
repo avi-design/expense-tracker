@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import {connect} from "react-redux";
 
 class IncomeExpenses extends Component{
-render(){
-  let expTotal = "0.00";
+  constructor(props){
+    super(props)
+    this.state ={
+     expTotal : "0.00"
+    }
     this.props.transactionSummary.map((transaction, index)=>{
       debugger; 
-      parseInt(expTotal =+ transaction.transAmount).toFixed(2);
+      this.setState({expTotal:parseInt(this.state.expTotal + transaction.transAmount).toFixed(2)});
     });
-  console.log(expTotal);
+  }
+render(){
+   
+  console.log(this.state.expTotal);
     return(
         <div className="row padding-top-50">
           <div className="col-xl-6 col-lg-6">
@@ -39,7 +45,7 @@ render(){
                   <div className="row">
                     <div className="col">
                       <h5 className="card-title text-uppercase text-muted mb-0">Expenses</h5>
-                      <span className="h2 font-weight-bold mb-0">{expTotal}</span>
+                      <span className="h2 font-weight-bold mb-0">{this.state.expTotal}</span>
                     </div>
                     <div className="col-auto">
                       <div className="icon icon-shape bg-danger text-white rounded-circle shadow">

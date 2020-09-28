@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component, Fragment} from 'react';
 import {connect} from "react-redux";
 import NavBar from "../left-navbar/navbar"
 import FooterContainer from "../footer/footer"
@@ -13,7 +13,7 @@ class ExpenseTable extends Component{
 
     render(){
         return(
-    <React.Fragment>      
+    <Fragment>      
     <NavBar></NavBar>      
     <div className="main-content">
     <nav className="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
@@ -63,7 +63,7 @@ class ExpenseTable extends Component{
     </nav>
 
     
-    <div className="container-fluid padding-top-50">
+    <div className="container-fluid bg-gradient-primary padding-top-50">
     <div className="container pb-5">    
          
       <div className="row justify-content-center">
@@ -101,10 +101,10 @@ class ExpenseTable extends Component{
         </div>
       </div>
     </div>
-  <FooterContainer></FooterContainer>
     </div>
+    <FooterContainer></FooterContainer>
   </div>
-  </React.Fragment>
+  </Fragment>
         )
     }
 }
