@@ -198,5 +198,4 @@ const mapStateToProps = (state)=>{
   //return bindActionCreators({loginUser:loginUser}, dispatch);
 }*/ 
 
-
 export default connect(mapStateToProps,{loginUser,setAlert})(LoginContainer);
