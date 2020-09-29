@@ -23,7 +23,6 @@ export default function (state = intialState, action) {
             }
             break;
         case REGISTER_FAIL:
-        case LOGOUT:
             localStorage.removeItem("token")
             return{
                 ...state,

@@ -1,42 +1,42 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {connect} from "react-redux";
-import{addTransactionAction} from "../../actions"
+import{addTransactionAction} from "../../actions";
+import {sendTransaction} from "../../services/transaction-service";
 
-class AddTransaction extends Component{
+const AddTransaction =({addTransactionAction})=>{
 
-  state={
-    expName:"",
-    expPrice:"",
-    errorTransactionBlock:false
-  }
+  const [formTrans, setFormTrans] = useState({
+    name:'',
+    amount:''
+  });
 
-  setText = (e)=>{
-    const inputValue = e.target.value;
+  const setFormData = (e)=>{
+    //const inputValue = e.target.value;
     //const nameRegx = ;
     //debugger;
-    this.setState({
-      [e.target.name] : e.target.value
-    })
+    setFormTrans({...formTrans,[e.target.name] : e.target.value});
     
   }
-
-  setAmount = (e) =>{
-
+  //const {name,amount} = formTrans;
+  console.log(formTrans)
+  /* setAmount = (e) =>{
     this.setState({
       [e.target.name] : e.target.value
     })
 
+  } */
+
+ const addTransaction = async()=>{
+    debugger;
+    const transData = await sendTransaction(formTrans);
+    addTransactionAction(transData.data);
   }
 
-  addTransaction =()=>{
-    this.props.addTransactionDispatch(this.state.expName, this.state.expPrice);
-  }
-
-  showErrorBlock = ()=>{
+  const showErrorBlock = ()=>{
 
   }
 
-    render(){
+
         return(
           <div className="row">
             <div className="col-xl-12">
@@ -54,7 +54,7 @@ class AddTransaction extends Component{
                     <div className="input-group-prepend">
                       <span className="input-group-text"><i className="ni ni-email-83"></i></span>
                     </div>
-                    <input className="form-control" placeholder="Enter item..." name="expName" type="text" value={this.state.expName} onChange={this.setText} />
+                    <input className="form-control" placeholder="Enter item..." name="name" type="text" onChange={e=>setFormData(e)} />
   
                   </div>
                 </div>
@@ -63,11 +63,11 @@ class AddTransaction extends Component{
                     <div className="input-group-prepend">
                       <span className="input-group-text"><i className="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input className="form-control" placeholder="Enter amount..." name="expPrice" type="text" value={this.state.expPrice} onChange={this.setAmount} />
+                    <input className="form-control" placeholder="Enter amount..." name="amount" type="text" onChange={e=>setFormData(e)} />
                   </div>
                 </div>
                 <div className="text-center">
-                  <button type="button" className="btn btn-primary my-4" onClick={this.addTransaction}>Add Transaction</button>
+                  <button type="button" className="btn btn-primary my-4" onClick={e=>addTransaction(e)}>Add Transaction</button>
                 </div>
                
               </form>
@@ -77,20 +77,20 @@ class AddTransaction extends Component{
           </div>
         )
     }
-}
-function mapStateToProps(state) {
-  
-  
-}
 
-function matchDispatchToProps(dispatch){
+/* function mapStateToProps(state) {
+  
+  
+} */
+
+/* function matchDispatchToProps(dispatch){
   return{
     addTransactionDispatch:(name, amount)=>{
       dispatch(addTransactionAction(name, amount))
     }
   }
 
-}
+} */
 
 
-export default connect(mapStateToProps, matchDispatchToProps)(AddTransaction);
+export default connect(null,{addTransactionAction})(AddTransaction);

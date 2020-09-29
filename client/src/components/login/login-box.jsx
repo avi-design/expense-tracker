@@ -60,7 +60,7 @@ const LoginContainer = ({loginUser,setAlert,isAuthenticated})=> {
 
   const renderDashboard= ()=>{
     //console.log(this.props);    
-    History.push("/dashboard"); 
+    History.push("/expenses"); 
   }
 
       const responseGoogle = (response) => {
@@ -76,7 +76,7 @@ const LoginContainer = ({loginUser,setAlert,isAuthenticated})=> {
         //debugger;
         //console.log(isAuthenticated);
         if(isAuthenticated){
-          return <Redirect to="/dashboard"/>;
+          return <Redirect to="/expenses"/>;
         } 
           
        

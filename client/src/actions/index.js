@@ -32,11 +32,11 @@ export const loadUser =(userDetailRes, type)=>dispatch =>
     
 }*/
 
-export const addTransactionAction =(name, amount)=>
+export const addTransactionAction =(transactionData)=>
 {
     return{
         type:ADD_TRANSACTION,
-        payLoad:{transItem:name,transAmount:amount}
+        payLoad:{transItem:transactionData.name,transAmount:transactionData.amount}
     }
     
 }

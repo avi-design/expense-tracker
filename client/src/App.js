@@ -5,10 +5,10 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-ro
 import{connect} from "react-redux";
 import DashBoardContent from "./components/dashboard";
 import LoginPage from "./components/login";
-import ExpenseTable from "./components/balance-dashboard/balance";
+import ExpenseTable from "./components/transaction-dashboard";
 import RegisterMemeber from "./components/registration";
 import {getUserDeatils} from "./services/login-service"
-import PrivateRoute from "./route/privateRoute";
+//import PrivateRoute from "./route/privateRoute";
 //import {Provider} from "react-redux";
 
 class App extends Component {
@@ -16,9 +16,9 @@ class App extends Component {
     super(props)
   };
   
-  componentDidMount(){
+  /* componentDidMount(){
     getUserDeatils();
-  }
+  } */
 
 render(){
     return(
@@ -26,8 +26,8 @@ render(){
       <Route exact path='/' component={LoginPage} />
       <Switch>
       <Route exact path='/register' component={RegisterMemeber} />
-        <PrivateRoute exact path='/expenses' component={ExpenseTable} />
-        <PrivateRoute exact path='/dashboard' component={DashBoardContent} />
+        <Route exact path='/expenses' component={ExpenseTable} />
+        <Route exact path='/dashboard' component={DashBoardContent} />
       </Switch>
      
     </Router>

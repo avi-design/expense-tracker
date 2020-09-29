@@ -46,8 +46,6 @@ router.post("/add", [auth,[
     transactionFields.amount = amount;
     try {
         let transaction = await Transaction.findOne({user:req.user.id}); 
-        console.log("1st console"+transaction)
-        
             transaction = new Transaction(transactionFields)
             await transaction.save();
             res.json(transaction);
