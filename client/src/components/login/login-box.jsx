@@ -76,7 +76,7 @@ const LoginContainer = ({loginUser,setAlert,isAuthenticated})=> {
         //debugger;
         //console.log(isAuthenticated);
         if(isAuthenticated){
-          return <Redirect to="/expenses"/>;
+          return <Redirect to="/dashboard"/>;
         } 
           
        

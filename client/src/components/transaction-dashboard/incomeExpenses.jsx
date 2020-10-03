@@ -8,7 +8,6 @@ class IncomeExpenses extends Component{
      expTotal : "0.00"
     }
     this.props.transactionSummary.map((transaction, index)=>{
-      debugger; 
       this.setState({expTotal:parseInt(this.state.expTotal + transaction.transAmount).toFixed(2)});
     });
   }

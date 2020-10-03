@@ -27,8 +27,9 @@ const AddTransaction =({addTransactionAction})=>{
   } */
 
  const addTransaction = async()=>{
-    debugger;
+    
     const transData = await sendTransaction(formTrans);
+    debugger;
     addTransactionAction(transData.data);
   }
 

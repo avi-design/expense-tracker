@@ -12,14 +12,12 @@ const allReducers = combineReducers({
     transactionList:transactionName
 })
 
-const rootReducer = (state, action) => {
-    debugger;   
+const rootReducer = (state, action) => { 
     // Clear all data in redux store to initial.
     if(action.type == LOGOUT){
         localStorage.removeItem("token")
         state = undefined; 
     }
-   
     return allReducers(state, action);
  };
  export default rootReducer;

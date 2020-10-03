@@ -12,35 +12,21 @@ class TransactionList extends Component{
       }
 
     }
-    /* componentDidUpdate(){
-      this.setState({
-        user_id:this.props.userId.user._id,
-        userLoaded:true
-      })
-    } */
-    componentDidUpdate(){
-      //debugger;
-      //console.log(this.state.userLoaded);
-      //const dispatch = useDispatch()
-      //console.log(props)
-      //debugger;
-      //if(prevState.transactionData == this.state.transactionData){ 
-        if(!this.state.userLoaded && this.props.isAuthenticated){
+
+    componentDidMount(){
+        if(!this.state.userLoaded && this.props.isAuthenticated && 
+          this.props.transactionSummary.length <= 0){
           let user_id = this.props.userId.user._id
             getAllTransaction(user_id).then((res)=>{
-            // this.setTransData(res.data);
-              //debugger;
-              //this.setState({transactionData :res.data})
               this.setState({userLoaded:true})
               this.sendTransDataToStore(res.data);
-              //console.log(this.state.transactionData);
             });
-          //};
         }
     }
 
 
      sendTransDataToStore=(data)=>{
+      //let alltrans = data;
       data.map(item=>{
         store.dispatch(addTransactionAction({
           name:item.name,
@@ -89,6 +75,7 @@ class TransactionList extends Component{
 }
 
 function mapStateToProps(state){
+  debugger;
   return{
     transactionSummary :state.transactionList,
     isAuthenticated:state.auth.isAuthenticated,

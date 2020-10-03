@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import RightContent from "./right-component";
-import NavBar from "../left-navbar/navbar";
+import NavBar from "../navbar/left-navbar";
 
 class DashBoardContent extends Component{
 

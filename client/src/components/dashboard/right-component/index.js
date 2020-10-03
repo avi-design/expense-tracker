@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
-import FooterContainer from "../../footer/footer"
+import FooterContainer from "../../footer/footer";
+import TopNavigation from "../../navbar/top-navbar"
 
 class RightContent extends Component{
     render(){
@@ -15,7 +16,7 @@ class RightContent extends Component{
       //console.log(this.props.googleUserData);
         return(
             <div className="main-content">
-    <nav className="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+    {/* <nav className="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div className="container-fluid">
         <a className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
         <form className="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
@@ -70,8 +71,8 @@ class RightContent extends Component{
           </li>
         </ul>
       </div>
-    </nav>
-
+    </nav> */}
+    <TopNavigation/>
     <div className="header bg-gradient-primary pb-8 pt-5 pt-md-8">
       <div className="container-fluid">
         <div className="header-body">

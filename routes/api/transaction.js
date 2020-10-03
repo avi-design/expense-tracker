@@ -9,14 +9,15 @@ const {check, validationResult} = require("express-validator");
 //@desc get transaction by user id
 //@route Public
 router.get("/getTransaction/:user_id", async (req,res)=>{
-
     try {
         const allTransaction = await Transaction.find({user:req.params.user_id});
+        //let allTransaction = transactions.reverse();
+        //console.log(allTransaction);
         if(!allTransaction || allTransaction.length == 0){
             return res.status(400).json({msg : "No transaction found for this user !!!"});
         }
         res.status(200).json(allTransaction);
-        console.log(allTransaction + "array length...." + allTransaction.length);
+        //console.log(allTransaction + "array length...." + allTransaction.length);
     } catch (error) {
         console.error(error.message);
         if(error.kind == "ObjectId") return res.status(400).json({msg : "Transaction not found!!!"});
@@ -54,9 +55,6 @@ router.post("/add", [auth,[
         console.error(error.message);
         res.status(500).send("server error...");
     }
-
-
-    //res.send("passed....");
 });
 
 
