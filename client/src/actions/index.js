@@ -72,9 +72,10 @@ export const registerFail = () => dispatch =>
 }
 
 export const logOut = () => dispatch =>
-
 {
     dispatch({
         type:LOGOUT
     })  
 }
+
+

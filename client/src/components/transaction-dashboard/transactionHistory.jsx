@@ -38,9 +38,6 @@ class TransactionList extends Component{
 
     render(){
       const transactionSummaryMap= this.props.transactionSummary;
-      //const transactionHistoryList = this.transactionHistoryList();
-      //debugger;
-      //console.log(transactionHistoryList);
       if(transactionSummaryMap.length > 0)
         return(
               <div className="row py-lg-5">

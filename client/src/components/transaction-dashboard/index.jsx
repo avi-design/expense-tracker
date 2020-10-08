@@ -17,9 +17,7 @@ class ExpenseTable extends Component{
     <Fragment>      
     <NavBar></NavBar>      
     <div className="main-content">
-         <TopNavigation/> 
-
-    
+     <TopNavigation/> 
     <div className="container-fluid bg-gradient-primary padding-top-50">
     <div className="container pb-5">    
          

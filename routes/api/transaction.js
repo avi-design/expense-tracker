@@ -17,7 +17,6 @@ router.get("/getTransaction/:user_id", async (req,res)=>{
             return res.status(400).json({msg : "No transaction found for this user !!!"});
         }
         res.status(200).json(allTransaction);
-        //console.log(allTransaction + "array length...." + allTransaction.length);
     } catch (error) {
         console.error(error.message);
         if(error.kind == "ObjectId") return res.status(400).json({msg : "Transaction not found!!!"});
@@ -50,7 +49,6 @@ router.post("/add", [auth,[
             transaction = new Transaction(transactionFields)
             await transaction.save();
             res.json(transaction);
-
     } catch (error) {
         console.error(error.message);
         res.status(500).send("server error...");
@@ -68,11 +66,10 @@ router.delete("/deleteTransaction", auth, async(req,res)=>{
     //remove user transaction
     const {name, amount} = req.body;
     const transaction = await Transaction.findOneAndRemove({ user:req.user.id, name:name , amount:amount });
-    res.json("Transaction deleted...");
-    // There is no such profile to delete
-        
+    res.json("Transaction deleted...");    
     } catch (error) {
         console.error(error.message);
+        // There is no such profile to delete
         res.status(500).json({msg: "There is no such profile to delete"});
     }
 

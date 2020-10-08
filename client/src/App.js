@@ -8,6 +8,7 @@ import LoginPage from "./components/login";
 import ExpenseTable from "./components/transaction-dashboard";
 import RegisterMemeber from "./components/registration";
 import {getUserDeatils} from "./services/login-service"
+import CreateProfile from "./components/profile/"
 //import PrivateRoute from "./route/privateRoute";
 //import {Provider} from "react-redux";
 
@@ -24,8 +25,10 @@ render(){
     return(
       <Router>
       <Route exact path='/' component={LoginPage} />
+      <Route exact path='/profile' component={CreateProfile} />
       <Switch>
       <Route exact path='/register' component={RegisterMemeber} />
+      
         <Route exact path='/expenses' component={ExpenseTable} />
         <Route exact path='/dashboard' component={DashBoardContent} />
       </Switch>
