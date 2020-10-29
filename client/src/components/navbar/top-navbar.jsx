@@ -1,13 +1,12 @@
 import React, {useEffect, useState}from 'react';
 import {connect} from "react-redux";
 import{logOut} from "../../actions";
-import{Link} from "react-router-dom"
+import{Link, useHistory} from "react-router-dom"
 
 
-const TopNavigation = ({userData,logOut})=>{
+const TopNavigation = ({userData,logOut,props})=>{
     const [profileDropDown, setprofileDropDown] = useState(false);
     const[clickCount, setclickCount] = useState(0);
-    //console.log(this.props);  
     const navDropDown = () =>{ 
         if(clickCount == 0){
             setprofileDropDown(true);

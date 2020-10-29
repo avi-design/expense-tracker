@@ -1,20 +1,22 @@
 import React,{Fragment, useState} from 'react';
 
-const EditProfileForm = ({editProfileFormData, editchange})=>{
-    return(
+  const EditProfileForm = ({editProfileFormData, editchange})=>{
+  const{userName,email,firstname,lastname, address, city, country, postalCode, aboutMe} = editProfileFormData;
+  console.log(aboutMe);  
+  return(
         <Fragment>
         <div className="pl-lg-4">
         <div className="row">
           <div className="col-lg-6">
             <div className="form-group">
               <label className="form-control-label" htmlFor="input-username">Username</label>
-              <input type="text" id="input-username" className="form-control form-control-alternative" placeholder="Username" value={editProfileFormData.userName} name="userName" readOnly onChange={e=>editchange(e)}/>
+              <input type="text" id="input-username" className="form-control form-control-alternative" placeholder="Username" value={userName} name="userName" readOnly onChange={e=>editchange(e)}/>
             </div>
           </div>
           <div className="col-lg-6">
             <div className="form-group">
               <label className="form-control-label" htmlFor="input-email">Email address</label> 
-              <input type="email" id="input-email" className="form-control form-control-alternative" value={editProfileFormData.email} name="email" onChange={e=>editchange(e)} /> 
+              <input type="email" id="input-email" className="form-control form-control-alternative" value={email} name="email" onChange={e=>editchange(e)} /> 
             </div>
           </div>
         </div>
@@ -22,20 +24,20 @@ const EditProfileForm = ({editProfileFormData, editchange})=>{
           <div className="col-lg-6">
             <div className="form-group">
               <label className="form-control-label" htmlFor="input-first-name">First name</label>
-              <input type="text" id="input-first-name" className="form-control form-control-alternative" placeholder="First name" name="fname" onChange={e=>editchange(e)} value={editProfileFormData.fname}/>
+              <input type="text" id="input-first-name" className="form-control form-control-alternative" placeholder="First name" name="firstname" onChange={e=>editchange(e)} value={firstname}/>
             </div>
           </div>
           <div className="col-lg-6">
             <div className="form-group">
               <label className="form-control-label" htmlFor="input-last-name">Last name</label>
-              <input type="text" id="input-last-name" className="form-control form-control-alternative" placeholder="Last name" name="lname" onChange={e=>editchange(e)} value={editProfileFormData.lname}/>
+              <input type="text" id="input-last-name" className="form-control form-control-alternative" placeholder="Last name" name="lastname" onChange={e=>editchange(e)} value={lastname}/>
             </div>
           </div>
         </div>
       </div>
       <hr className="my-4" />
       <h6 className="heading-small text-muted mb-4">Contact information</h6>
-      {/* <div className="pl-lg-4">
+      <div className="pl-lg-4">
         <div className="row">
           <div className="col-md-12">
             <div className="form-group">
@@ -64,17 +66,17 @@ const EditProfileForm = ({editProfileFormData, editchange})=>{
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
       <hr className="my-4" />
       <h6 className="heading-small text-muted mb-4">About me</h6>
-     {/*  <div className="pl-lg-4">
+     <div className="pl-lg-4">
         <div className="form-group">
           <label>About Me</label>
-          <textarea rows="4" className="form-control form-control-alternative" placeholder="A few words about you ..." name="aboutMe" onChange={e=>editchange(e)}>{aboutMe}</textarea>
+          <textarea rows="4" className="form-control form-control-alternative" placeholder="A few words about you ..." name="aboutMe" onChange={e=>editchange(e)} value={aboutMe}>{aboutMe}</textarea>
         </div>
-      </div> */}
+      </div>
       </Fragment>
     )
   }
   
-  export default EditProfileForm
+  export default EditProfileForm;

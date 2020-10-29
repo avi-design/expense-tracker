@@ -3,25 +3,31 @@ import FooterContainer from "../footer/footer";
 import { connect } from "react-redux";
 import{Redirect} from "react-router-dom";
 import ProfileForm from './profileForm';
-import EditProfileForm from './editProfile'
-
+import EditProfileForm from './editProfile';
+import {updateProfile} from "../../services/update-profile-service";
+import {loadUser,setAlert} from "../../actions";
+import store from "../../store/store";
 
 const Profile = ({auth, profile}) =>{
-    const [editDetails, seteditDetails] = useState(false);
+    const [editDetails, setEditDetails] = useState(false);
+    const [saveButtonEnable, setSaveButton] = useState(false);
     const [editProfileFormData, seteditProfileFormData] = useState({
         userName:'',
         email:'',
-        fname:'', 
-        lname:'', 
+        firstname:'', 
+        lastname:'', 
         address:'', 
         city:'', 
         country:'', 
         postalCode:'', 
         aboutMe:''
     });
+    
+
 
     const editchange = (e)=>{
         seteditProfileFormData({...editProfileFormData, [e.target.name]:e.target.value});
+        
     }
 
     const editProfile = ()=>{
@@ -29,17 +35,26 @@ const Profile = ({auth, profile}) =>{
             ...editProfileFormData,
             userName:profile.user.email,
             email:profile.user.email,
-            fname:profile.firstname, 
-            lname:profile.lastname, 
+            firstname:profile.firstname, 
+            lastname:profile.lastname, 
             address:profile.address, 
             city:profile.city, 
             country:profile.country, 
             postalCode:profile.postalCode, 
-            aboutMe:profile.aboutMe
+            aboutMe:profile.aboutme
         });
-        seteditDetails(true);
-       
+        setEditDetails(true);
+        setSaveButton(true);
     }
+
+const updateProfileData = async (e)=>{
+    debugger;
+    e.preventDefault();
+    const profileUpdate = await updateProfile(editProfileFormData);
+    store.dispatch(loadUser(profileUpdate, "USER_LOADED"));
+    console.log(profileUpdate);
+}
+
 if(auth.isAuthenticated){
     return(
         <Fragment>
@@ -130,7 +145,7 @@ if(auth.isAuthenticated){
           <h6 className="heading-small text-muted mb-4">User information</h6>
           {editDetails ? <EditProfileForm editchange={editchange} editProfileFormData={editProfileFormData}/> : <ProfileForm profile={profile} />}
           <div className="text-center">
-            <button type="button" className="btn btn-primary my-4">Save Profile</button>
+            <button type="submit" className={!saveButtonEnable ? "btn btn-primary my-4 disabled" : "btn btn-primary my-4"} onClick={(e)=>updateProfileData(e)}>Save Profile</button>
         </div>
         </form>
       </div>
