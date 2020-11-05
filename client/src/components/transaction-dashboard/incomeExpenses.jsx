@@ -7,13 +7,23 @@ class IncomeExpenses extends Component{
     this.state ={
      expTotal : "0.00"
     }
+  }
+  /* componentDidMount(){
+    debugger;
     this.props.transactionSummary.map((transaction, index)=>{
       this.setState({expTotal:parseInt(this.state.expTotal + transaction.transAmount).toFixed(2)});
     });
+  } */
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props !== prevProps) {
+      this.props.transactionSummary.map((transaction, index)=>{
+        this.setState({expTotal:parseInt(this.state.expTotal + transaction.transAmount).toFixed(2)});
+      });
+    }
   }
+
 render(){
-   
-  console.log(this.state.expTotal);
     return(
         <div className="row padding-top-50">
           <div className="col-xl-6 col-lg-6">

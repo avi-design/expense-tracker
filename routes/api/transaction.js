@@ -44,10 +44,11 @@ router.post("/add", [auth,[
     transactionFields.user = req.user.id;
     transactionFields.name = name;
     transactionFields.amount = amount;
+   
     try {
         let transaction = await Transaction.findOne({user:req.user.id}); 
             transaction = new Transaction(transactionFields)
-            await transaction.save();
+           await transaction.save();
             res.json(transaction);
     } catch (error) {
         console.error(error.message);
@@ -64,8 +65,10 @@ router.post("/add", [auth,[
 router.delete("/deleteTransaction", auth, async(req,res)=>{
     try {
     //remove user transaction
-    const {name, amount} = req.body;
+    console.log(req.query);
+    const {name, amount} = req.query;
     const transaction = await Transaction.findOneAndRemove({ user:req.user.id, name:name , amount:amount });
+    //await transaction.save();
     res.json("Transaction deleted...");    
     } catch (error) {
         console.error(error.message);

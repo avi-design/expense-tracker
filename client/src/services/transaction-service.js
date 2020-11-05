@@ -4,8 +4,6 @@ if(localStorage.token){
     setToken(localStorage.token)
   }
 export const sendTransaction = async (formTrans)=>{
-    debugger;
-   
       try {
         return await axios.post("api/transaction/add",formTrans)
       } catch (error) {
@@ -16,7 +14,6 @@ export const sendTransaction = async (formTrans)=>{
 }
 
 export const getAllTransaction = async (useId)=>{
-    //debugger;
     try {
         return await axios.get("api/transaction/getTransaction/"+useId)
       } catch (error) {
@@ -24,4 +21,15 @@ export const getAllTransaction = async (useId)=>{
           return error.response;
       }
     
+}
+
+export const removeTransaction = async (transData)=>{
+  try {
+      return await axios.delete("api/transaction/deleteTransaction", 
+      { params: transData })
+    } catch (error) {
+        console.error(error.message);
+        return error.response;
+    }
+  
 }

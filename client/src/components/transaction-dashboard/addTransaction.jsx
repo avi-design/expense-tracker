@@ -15,10 +15,9 @@ const AddTransaction =({addTransactionAction})=>{
     //const nameRegx = ;
     //debugger;
     setFormTrans({...formTrans,[e.target.name] : e.target.value});
-    
   }
   //const {name,amount} = formTrans;
-  console.log(formTrans)
+  //console.log(formTrans)
   /* setAmount = (e) =>{
     this.setState({
       [e.target.name] : e.target.value
@@ -27,9 +26,7 @@ const AddTransaction =({addTransactionAction})=>{
   } */
 
  const addTransaction = async()=>{
-    
     const transData = await sendTransaction(formTrans);
-    debugger;
     addTransactionAction(transData.data);
   }
 

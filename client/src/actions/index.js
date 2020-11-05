@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-import{SET_ALERT,REMOVE_ALERT, USER_LOGIN,GOOGLE_LOGIN,ADD_TRANSACTION} from "./actionTypes";
+import{SET_ALERT,REMOVE_ALERT, USER_LOGIN,GOOGLE_LOGIN,ADD_TRANSACTION,
+    DELETE_TRANSACTION} from "./actionTypes";
 import{REGISTER_SUCCESS,REGISTER_FAIL,AUTH_ERROR,USER_LOADED,LOGOUT} from "./actionTypes"
 import { Action } from 'history';
 export const loginUser =(userData)=> dispatch =>
@@ -36,7 +37,16 @@ export const addTransactionAction =(transactionData)=>
 {
     return{
         type:ADD_TRANSACTION,
-        payLoad:{transItem:transactionData.name,transAmount:transactionData.amount}
+        payLoad:{name:transactionData.name,amount:transactionData.amount,id:transactionData._id}
+    }
+    
+}
+
+export const deleteTransactionAction =(transactionData)=>
+{
+    return{
+        type:DELETE_TRANSACTION,
+        payLoad:transactionData
     }
     
 }
